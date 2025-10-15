@@ -24,9 +24,9 @@ if [ "$SSH" = "y" ]; then
         echo "disabling root login"
         #get the line number of the PermitRootLogin line
         PRL="$(grep -n 'PermitRootLogin' /etc/ssh/sshd_config | grep -v '#' | cut -f1 -d:)"
-        sed -e "${PRL}s/.*/PermitRootLogin no/" /etc/ssh/sshd_config > ${USER_HOME}/backup/temp1.txt
-        mv /etc/ssh/sshd_config ${USER_HOME}/backup/sshd_config-1.old
-        mv ${USER_HOME}/backup/temp1.txt /etc/ssh/sshd_config
+        sed -e "${PRL}s/.*/PermitRootLogin no/" /etc/ssh/sshd_config > $USER_HOME/backup/temp1.txt
+        mv /etc/ssh/sshd_config $USER_HOME/backup/sshd_config-1.old
+        mv $USER_HOME/backup/temp1.txt /etc/ssh/sshd_config
     fi
     echo "Enable Standard SSH security? (y|n)"
     read -r SEC_SSH
@@ -35,50 +35,50 @@ if [ "$SSH" = "y" ]; then
         echo "disabling empty passwords"
 
         PRL="$(grep -n 'PermitEmptyPasswords' /etc/ssh/sshd_config | grep -v '#' | cut -f1 -d:)"
-        sed -e "${PRL}s/.*/PermitEmptyPasswords no/" /etc/ssh/sshd_config > ${USER_HOME}/backup/temp1.txt
-        mv /etc/ssh/sshd_config ${USER_HOME}/backup/sshd_config-2.old
-        mv ${USER_HOME}/backup/temp1.txt /etc/ssh/sshd_config
+        sed -e "${PRL}s/.*/PermitEmptyPasswords no/" /etc/ssh/sshd_config > $USER_HOME/backup/temp1.txt
+        mv /etc/ssh/sshd_config $USER_HOME/backup/sshd_config-2.old
+        mv $USER_HOME/backup/temp1.txt /etc/ssh/sshd_config
         echo "disabling user environment"
 
         PRL="$(grep -n 'PermitUserEnvironment' /etc/ssh/sshd_config | grep -v '#' | cut -f1 -d:)"
-        sed -e "${PRL}s/.*/PermitUserEnvironment no/" /etc/ssh/sshd_config > ${USER_HOME}/backup/temp1.txt
-        mv /etc/ssh/sshd_config ${USER_HOME}/backup/sshd_config-3.old
-        mv ${USER_HOME}/backup/temp1.txt /etc/ssh/sshd_config
+        sed -e "${PRL}s/.*/PermitUserEnvironment no/" /etc/ssh/sshd_config > $USER_HOME/backup/temp1.txt
+        mv /etc/ssh/sshd_config $USER_HOME/backup/sshd_config-3.old
+        mv $USER_HOME/backup/temp1.txt /etc/ssh/sshd_config
 
         echo "disabling Host Based Authentication"
 
         PRL="$(grep -n 'HostbasedAuthentication' /etc/ssh/sshd_config | grep -v '#' | cut -f1 -d:)"
-        sed -e "${PRL}s/.*/HostbasedAuthentication no/" /etc/ssh/sshd_config > ${USER_HOME}/backup/temp1.txt
-        mv /etc/ssh/sshd_config ${USER_HOME}/backup/sshd_config-4.old
-        mv ${USER_HOME}/backup/temp1.txt /etc/ssh/sshd_config
+        sed -e "${PRL}s/.*/HostbasedAuthentication no/" /etc/ssh/sshd_config > $USER_HOME/backup/temp1.txt
+        mv /etc/ssh/sshd_config $USER_HOME/backup/sshd_config-4.old
+        mv $USER_HOME/backup/temp1.txt /etc/ssh/sshd_config
 
         echo "set Client Alive Interval to 300"
 
         PRL="$(grep -n 'ClientAliveInterval' /etc/ssh/sshd_config | grep -v '#' | cut -f1 -d:)"
-        sed -e "${PRL}s/.*/ClientAliveInterval 300/" /etc/ssh/sshd_config > ${USER_HOME}/backup/temp1.txt
-        mv /etc/ssh/sshd_config ${USER_HOME}/backup/sshd_config-5.old
-        mv ${USER_HOME}/backup/temp1.txt /etc/ssh/sshd_config
+        sed -e "${PRL}s/.*/ClientAliveInterval 300/" /etc/ssh/sshd_config > $USER_HOME/backup/temp1.txt
+        mv /etc/ssh/sshd_config $USER_HOME/backup/sshd_config-5.old
+        mv $USER_HOME/backup/temp1.txt /etc/ssh/sshd_config
 
         echo "set Client Alive Count Max to 0"
 
         PRL="$(grep -n 'ClientAliveCountMax' /etc/ssh/sshd_config | grep -v '#' | cut -f1 -d:)"
-        sed -e "${PRL}s/.*/ClientAliveCountMax 0/" /etc/ssh/sshd_config > ${USER_HOME}/backup/temp1.txt
-        mv /etc/ssh/sshd_config ${USER_HOME}/backup/sshd_config-6.old
-        mv ${USER_HOME}/backup/temp1.txt /etc/ssh/sshd_config
+        sed -e "${PRL}s/.*/ClientAliveCountMax 0/" /etc/ssh/sshd_config > $USER_HOME/backup/temp1.txt
+        mv /etc/ssh/sshd_config $USER_HOME/backup/sshd_config-6.old
+        mv $USER_HOME/backup/temp1.txt /etc/ssh/sshd_config
 
         echo "Set Login Grace Time to 60"
 
         PRL="$(grep -n 'LoginGraceTime' /etc/ssh/sshd_config | grep -v '#' | cut -f1 -d:)"
-        sed -e "${PRL}s/.*/LoginGraceTime 60/" /etc/ssh/sshd_config > ${USER_HOME}/backup/temp1.txt
-        mv /etc/ssh/sshd_config ${USER_HOME}/backup/sshd_config-7.old
-        mv ${USER_HOME}/backup/temp1.txt /etc/ssh/sshd_config
+        sed -e "${PRL}s/.*/LoginGraceTime 60/" /etc/ssh/sshd_config > $USER_HOME/backup/temp1.txt
+        mv /etc/ssh/sshd_config $USER_HOME/backup/sshd_config-7.old
+        mv $USER_HOME/backup/temp1.txt /etc/ssh/sshd_config
 
         echo "Set Banner location"
 
         PRL="$(grep -n 'Banner' /etc/ssh/sshd_config | grep -v '#' | cut -f1 -d:)"
-        sed -e "${PRL}s/.*/Banner /etc/issue.net/" /etc/ssh/sshd_config > ${USER_HOME}/backup/temp1.txt
-        mv /etc/ssh/sshd_config ${USER_HOME}/backup/sshd_config-8.old
-        mv ${USER_HOME}/backup/temp1.txt /etc/ssh/sshd_config
+        sed -e "${PRL}s/.*/Banner /etc/issue.net/" /etc/ssh/sshd_config > $USER_HOME/backup/temp1.txt
+        mv /etc/ssh/sshd_config $USER_HOME/backup/sshd_config-8.old
+        mv $USER_HOME/backup/temp1.txt /etc/ssh/sshd_config
     fi
     echo "Start SSH system? (y|n)"
     read -r START_SSH
@@ -117,7 +117,7 @@ elif [ "$sambaYN" = "y" ]; then
 	ufw allow microsoft-ds
 	apt-get install samba -y -qq
 	apt-get install system-config-samba -y -qq
-	cp /etc/samba/smb.conf ${USER_HOME}/backup/
+	cp /etc/samba/smb.conf $USER_HOME/backup/
 	if [ "$(grep '####### Authentication #######' /etc/samba/smb.conf)"==0 ]
 	then
 		sed -i 's/####### Authentication #######/####### Authentication #######\nsecurity = user/g' /etc/samba/smb.conf
@@ -156,8 +156,8 @@ elif [ "$ftpYN" = "y" ]; then
 	ufw allow saft 
 	ufw allow ftps-data 
 	ufw allow ftps
-	cp /etc/vsftpd/vsftpd.conf ${USER_HOME}/backup/
-	cp /etc/vsftpd.conf ${USER_HOME}/backup/
+	cp /etc/vsftpd/vsftpd.conf $USER_HOME/backup/
+	cp /etc/vsftpd.conf $USER_HOME/backup/
 	gedit /etc/vsftpd/vsftpd.conf&gedit /etc/vsftpd.conf
 	service vsftpd restart
 	echo "ftp, sftp, saft, ftps-data, and ftps ports have been allowed on the firewall. vsFTPd service has been restarted."
@@ -265,10 +265,10 @@ then
 	ufw allow mysql 
 	ufw allow mysql-proxy
 	apt-get install mysql-server-5.6 -y -qq
-	cp /etc/my.cnf ${USER_HOME}/backup/
-	cp /etc/mysql/my.cnf ${USER_HOME}/backup/
-	cp /usr/etc/my.cnf ${USER_HOME}/backup/
-	cp ~/.my.cnf ${USER_HOME}/backup/
+	cp /etc/my.cnf $USER_HOME/backup/
+	cp /etc/mysql/my.cnf $USER_HOME/backup/
+	cp /usr/etc/my.cnf $USER_HOME/backup/
+	cp ~/.my.cnf $USER_HOME/backup/
 	if grep -q "bind-address" "/etc/mysql/my.cnf"
 	then
 		sed -i "s/bind-address\t\t=.*/bind-address\t\t= 127.0.0.1/g" /etc/mysql/my.cnf
@@ -297,7 +297,7 @@ then
 	apt-get install apache2 -y -qq
 	ufw allow http 
 	ufw allow https
-	cp /etc/apache2/apache2.conf ${USER_HOME}/backup/
+	cp /etc/apache2/apache2.conf $USER_HOME/backup/
 	if [ -e /etc/apache2/apache2.conf ]
 	then
   	  echo -e '\<Directory \>\n\t AllowOverride None\n\t Order Deny,Allow\n\t Deny from all\n\<Directory \/\>\nUserDir disabled root' >> /etc/apache2/apache2.conf
